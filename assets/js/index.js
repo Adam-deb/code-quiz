@@ -202,7 +202,9 @@ function clearHighScores() {
     console.log("High scores cleared from local storage.");
 }
 
-clearHighScoresButton.addEventListener("click", clearHighScores)
+if (window.location.pathname.endsWith("/highscores.html")) {
+    clearHighScoresButton.addEventListener("click", clearHighScores)
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     displayHighScores();
