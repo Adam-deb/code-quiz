@@ -76,11 +76,6 @@ function displayHighScores() {
     // Sort high scores by score (descending order)
     highScores.sort((a, b) => b.score - a.score);
 
-    // Ensure highScoresList is correctly referencing the element
-    console.log("High Scores List Element:", highScoresList);
-
-    // Clear any existing content
-    highScoresList.innerHTML = "";
 
     // Create a list item for each high score and append it to the list
     highScores.forEach((scoreData, index) => {
