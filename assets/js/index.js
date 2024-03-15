@@ -11,46 +11,46 @@ const questions = [
         options: ["<style>", "<link>", "<css>", "<href>"],
         answer: "<link>"
     },
-    // {
-    //     prompt: "Which HTML tag is used to create a hyperlink?",
-    //     options: ["<a>", "<link>", "<href>", "<url>"],
-    //     answer: "<a>"
-    // },
-    // {
-    //     prompt: "What does CSS stand for?",
-    //     options: ["Cascading Style Sheets", "Creative Style Sheets", "Computer Style Sheets", "Coded Style Sheets"],
-    //     answer: "Cascading Style Sheets"
-    // },
-    // {
-    //     prompt: "Which HTML tag is used to define an unordered list?",
-    //     options: ["<ul>", "<list>", "<ol>", "<li>"],
-    //     answer: "<ul>"
-    // },
-    // {
-    //     prompt: "How do you comment in JavaScript?",
-    //     options: ["<!-- comment -->", "/* comment */", "// comment", "# comment"],
-    //     answer: "// comment"
-    // },
-    // {
-    //     prompt: "Which CSS property is used to change the text color of an element?",
-    //     options: ["text-color", "color", "font-color", "text-style"],
-    //     answer: "color"
-    // },
-    // {
-    //     prompt: "How do you declare a CSS class in a stylesheet?",
-    //     options: [".classname", "#classname", "classname:", "classname()"],
-    //     answer: ".classname"
-    // },
-    // {
-    //     prompt: "What is the correct way to select an element with the id 'example' using JavaScript?",
-    //     options: ["getElement('example')", "document.select('#example')", "document.querySelector('#example')", "document.getElementById('example')"],
-    //     answer: "document.getElementById('example')"
-    // },
-    // {
-    //     prompt: "What does the 'float' property do in CSS?",
-    //     options: ["Aligns text to the left or right within its container", "Causes an element to move up and down", "Makes an element transparent", "Adds a shadow to an element"],
-    //     answer: "Aligns text to the left or right within its container"
-    // }
+    {
+        prompt: "Which HTML tag is used to create a hyperlink?",
+        options: ["<a>", "<link>", "<href>", "<url>"],
+        answer: "<a>"
+    },
+    {
+        prompt: "What does CSS stand for?",
+        options: ["Cascading Style Sheets", "Creative Style Sheets", "Computer Style Sheets", "Coded Style Sheets"],
+        answer: "Cascading Style Sheets"
+    },
+    {
+        prompt: "Which HTML tag is used to define an unordered list?",
+        options: ["<ul>", "<list>", "<ol>", "<li>"],
+        answer: "<ul>"
+    },
+    {
+        prompt: "How do you comment in JavaScript?",
+        options: ["<!-- comment -->", "/* comment */", "// comment", "# comment"],
+        answer: "// comment"
+    },
+    {
+        prompt: "Which CSS property is used to change the text color of an element?",
+        options: ["text-color", "color", "font-color", "text-style"],
+        answer: "color"
+    },
+    {
+        prompt: "How do you declare a CSS class in a stylesheet?",
+        options: [".classname", "#classname", "classname:", "classname()"],
+        answer: ".classname"
+    },
+    {
+        prompt: "What is the correct way to select an element with the id 'example' using JavaScript?",
+        options: ["getElement('example')", "document.select('#example')", "document.querySelector('#example')", "document.getElementById('example')"],
+        answer: "document.getElementById('example')"
+    },
+    {
+        prompt: "What does the 'float' property do in CSS?",
+        options: ["Aligns text to the left or right within its container", "Causes an element to move up and down", "Makes an element transparent", "Adds a shadow to an element"],
+        answer: "Aligns text to the left or right within its container"
+    }
 ];
 
 // DOM elements
