@@ -176,15 +176,6 @@ function clearHighScores() {
     console.log("High scores cleared from local storage.");
 }
 
-// Event listener for clearing high scores
-if (window.location.pathname.endsWith("/highscores.html")) {
-    clearHighScoresButton.addEventListener("click", clearHighScores)
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    displayHighScores();
-});
-
 // End quiz
 function endQuiz() {
     clearInterval(timerID);
@@ -205,16 +196,29 @@ function endQuiz() {
             alert("Please enter your initials.");
         }
     }
-
-    submitButton.addEventListener("click", saveInitials);
-}
+        submitButton.addEventListener("click", saveInitials);
+        }
 
 function redirectToHighScoresPage() {
     window.location.href = "highscores.html";
 }
 
 // Event listeners
-if (window.location.pathname.endsWith("/index.html")) {
+//start quiz
+document.addEventListener("DOMContentLoaded", function() {
+    if (window.location.pathname.endsWith("/index.html")) {
     document.getElementById("start").addEventListener("click", startQuiz);
-}
+    }
+})
+
+document.addEventListener("DOMContentLoaded", function() {
+    displayHighScores();
+});
+
+//clearing high scores
+document.addEventListener("DOMContentLoaded", function() {
+    if (window.location.pathname.endsWith("/highscores.html")) {
+        clearHighScoresButton.addEventListener("click", clearHighScores)
+    }
+})
 
