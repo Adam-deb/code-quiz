@@ -59,11 +59,15 @@ const timerElement = document.querySelector("#time");
 const choicesElement = document.querySelector("#choices");
 const initialsElement = document.querySelector("#initials");
 const feedbackElement = document.querySelector("#feedback");
+const submitButton = document.querySelector("#submit");
+const highScoresList = document.querySelector("#highscores");
+const clearHighScoresButton = document.querySelector("#clear")
 
 // Quiz state
 let currentQuestion = 0;
 let time = questions.length * 20;
 let timerID;
+let score = 0;
 
 // Initialize quiz
 function initializeQuiz() {
@@ -71,6 +75,7 @@ function initializeQuiz() {
     currentQuestion = 0;
     feedbackElement.textContent = "";
     initialsElement.value = "";
+    score = 0;
 }
 
 // Play sound for correct answer
@@ -83,6 +88,11 @@ function playCorrectSound() {
 function playWrongSound() {
     const wrongSound = document.getElementById("wrong-sound");
     wrongSound.play();
+}
+
+// Event listeners
+if (window.location.pathname.endsWith("/index.html")) {
+    document.getElementById("start").addEventListener("click", startQuiz);
 }
 
 // Start quiz
@@ -119,6 +129,7 @@ function questionClick(userChoice) {
         feedbackElement.textContent = "Correct!";
         feedbackElement.style.color = "green";
         playCorrectSound();
+        score += 1
     } else {
         feedbackElement.textContent = `Wrong! The correct answer was ${correctAnswer}.`;
         feedbackElement.style.color = "red";
@@ -135,16 +146,68 @@ function questionClick(userChoice) {
         } else {
             endQuiz();
         }
-    }, 2000);
+    }, 1000);
 }
 
 // End quiz
 function endQuiz() {
     clearInterval(timerID);
     document.getElementById("end-screen").classList.remove("hide");
-    document.getElementById("final-score").textContent = time;
+    document.getElementById("final-score").textContent = score;
     questionsElement.classList.add("hide");
+
+    // Function to handle saving initials
+    function saveInitials() {
+        const initials = initialsElement.value.trim();
+        if (initials !== "") {
+            const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+            highScores.push({ initials: initials, score: score });
+            localStorage.setItem("highScores", JSON.stringify(highScores));
+            
+            console.log("Score and initials saved to local storage.");
+            redirectToHighScoresPage()
+        } else {
+            alert("Please enter your initials.");
+        }
+    }
+
+    submitButton.addEventListener("click", saveInitials);
 }
+
+function redirectToHighScoresPage() {
+    window.location.href = "highscores.html"; 
+}
+
+// Function to display high scores on the highscores.html page
+function displayHighScores() {
+    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+    // Sort high scores by score (descending order)
+    highScores.sort((a, b) => b.score - a.score);
+
+    // Clear any existing content
+    highScoresList.innerHTML = "";
+
+    // Create a list item for each high score and append it to the list
+    highScores.forEach((scoreData, index) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${index + 1}. ${scoreData.initials}: ${scoreData.score}`;
+        highScoresList.appendChild(listItem);
+    });
+}
+
+function clearHighScores() {
+    localStorage.removeItem("highScores");
+    highScoresList.innerHTML = ""; 
+    console.log("High scores cleared from local storage.");
+}
+
+clearHighScoresButton.addEventListener("click", clearHighScores)
+
+document.addEventListener("DOMContentLoaded", function() {
+    displayHighScores();
+});
+
 
 // Handle timer tick
 function clockTick() {
@@ -155,5 +218,4 @@ function clockTick() {
     }
 }
 
-// Event listeners
-document.getElementById("start").addEventListener("click", startQuiz);
+
