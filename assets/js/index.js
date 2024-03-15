@@ -69,38 +69,6 @@ let time = questions.length * 20;
 let timerID;
 let score = 0;
 
-// Function to display high scores on the highscores.html page
-function displayHighScores() {
-    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-
-    // Sort high scores by score (descending order)
-    highScores.sort((a, b) => b.score - a.score);
-
-
-    // Create a list item for each high score and append it to the list
-    highScores.forEach((scoreData, index) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = `${index + 1}. ${scoreData.initials}: ${scoreData.score}`;
-        highScoresList.appendChild(listItem);
-    });
-}
-
-// Function to clear high scores
-function clearHighScores() {
-    localStorage.removeItem("highScores");
-    highScoresList.innerHTML = "";
-    console.log("High scores cleared from local storage.");
-}
-
-// Event listener for clearing high scores
-if (window.location.pathname.endsWith("/highscores.html")) {
-    clearHighScoresButton.addEventListener("click", clearHighScores)
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    displayHighScores();
-});
-
 // Handle timer tick
 function clockTick() {
     time--;
@@ -184,6 +152,38 @@ function questionClick(userChoice) {
         }
     }, 1000);
 }
+
+// Function to display high scores on the highscores.html page
+function displayHighScores() {
+    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+    // Sort high scores by score (descending order)
+    highScores.sort((a, b) => b.score - a.score);
+
+
+    // Create a list item for each high score and append it to the list
+    highScores.forEach((scoreData, index) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${index + 1}. ${scoreData.initials}: ${scoreData.score}`;
+        highScoresList.appendChild(listItem);
+    });
+}
+
+// Function to clear high scores
+function clearHighScores() {
+    localStorage.removeItem("highScores");
+    highScoresList.innerHTML = "";
+    console.log("High scores cleared from local storage.");
+}
+
+// Event listener for clearing high scores
+if (window.location.pathname.endsWith("/highscores.html")) {
+    clearHighScoresButton.addEventListener("click", clearHighScores)
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    displayHighScores();
+});
 
 // End quiz
 function endQuiz() {
